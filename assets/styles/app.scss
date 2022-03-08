@@ -1,0 +1,27 @@
+// Variables
+// Colors
+$yellow: #ee9b00;
+$yellow-dark: #d18800;
+$black: #001219;
+$white: #fff;
+
+body {
+  background-color: $white;
+}
+
+.nav-item, .nav-link {
+  border-radius: 3px;
+}
+
+.nav-link:hover, .nav-item:hover {
+  background-color: $yellow;
+  color: $black !important;
+}
+
+.active {
+  background-color: $yellow;
+  color: $black !important;
+}
+.active:hover {
+  background-color: $yellow-dark;
+}
