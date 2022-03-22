@@ -4,16 +4,26 @@ $yellow: #ee9b00;
 $yellow-dark: #d18800;
 $black: #001219;
 $white: #fff;
+$lightgrey: rgb(245, 245, 245);
+$darkblue : #1e2334;
+// font import
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+$font-title: "Comfortaa", cursive;
 
-body {
+// Common Component 'no responsive'
+body, html {
   background-color: $white;
+  scrollbar-color: $yellow $white;
+  scrollbar-width: auto;
 }
 
-.nav-item, .nav-link {
+.nav-item,
+.nav-link {
   border-radius: 3px;
 }
 
-.nav-link:hover, .nav-item:hover {
+.nav-link:hover,
+.nav-item:hover {
   background-color: $yellow;
   color: $black !important;
 }
@@ -24,4 +34,139 @@ body {
 }
 .active:hover {
   background-color: $yellow-dark;
+}
+footer {
+  // margin-top: 100px;
+  background-color: $white;
+}
+
+// asso template
+
+.asso-bloc {
+  height: 1400px;
+  width: 100%;
+}
+
+img.asso {
+  width: 951.5px;
+  height: 700px;
+}
+
+.asso-box {
+  height: 700px;
+  width: 50%;
+  margin-top: 55px;
+}
+.asso-box:nth-child(3),
+.asso-box:nth-child(4) {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 80px;
+  font-family: $font-title;
+}
+.sub-title {
+  font-size: 60px;
+  font-family: $font-title;
+  text-align: center;
+  margin-top: 50px !important;
+}
+.sub-sub-title{
+  font-size: 35px;
+  font-family: $font-title;
+  text-align: center;
+  margin-top: 50px !important;
+  // margin-left: 20%;
+  // margin-right: 20%;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.paragraph {
+  font-size: 25px;
+  color: $black;
+  text-align: justify;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+}
+
+span.yellow{
+  color: $yellow;
+  transition: 0.2s;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: -100px;
+  
+  border-radius: 50px;
+}
+span.yellow:hover{
+  transition: 0.2s;
+  background-color: $yellow;
+  color: white;
+  
+}
+
+
+
+// card-jobs
+.jobs {
+  height: auto;
+  width: 450px;
+  background-color: $lightgrey;
+  border-radius: 30px;
+  margin: 30px;
+  margin-top: 80px;
+}
+.banner-jobs {
+  width: 100%;
+  border-top-left-radius: 30px 30px;
+  border-top-right-radius: 30px 30px;
+}
+
+.btn-continued {
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-bottom: 10px;
+}
+.title-jobs{
+  text-align: center;
+}
+
+.content-jobs {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 20px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.metadata {
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+}
+hr{
+  margin: 0 !important;
+  padding: 0;
+}
+
+//page jobs
+.left {
+  width: 30%;
+  height: 100vh;
+}
+.right{
+  padding-left: 5%;
+  width: 70%;
+  height: 100vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.img-jobs-left{
+  height: 100%;
+  width: 100%;
 }

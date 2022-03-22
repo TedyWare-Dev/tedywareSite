@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+<style>
+    .title {
+        background: url({{jobs.picture}});
+        height: 500px;
+        width: 1920px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-top: 230px;
+        text-align: center;
+        font-size: 70px;
+        color: #ee9b00;
+        text-shadow: black 5px 5px;
+    }
+   
+</style>
+
+<h3 class="title">{{ jobs.title }}</h3>
+<div class="container">
+    <h3 class="sub-sub-title">Description du job :</h3>
+    <div class="paragraph">{{ jobs.content |  raw}}</div>
+    <h3 class="sub-sub-title">Votre mission :</h3>
+    <div class="paragraph">{{ jobs.mission |  raw}}</div>
+    <h3 class="sub-sub-title">Les technos :</h3>
+    <div class="paragraph">{{ jobs.technologie |  raw}}</div>
+    <h3 class="sub-sub-title">Ce que nous recherchons chez vous :</h3>
+    <div class="paragraph">{{ jobs.searchProfile |  raw}}</div> <br>
+    <div class="paragraph">Durée du contrat : <span class="yellow">{{ jobs.contract |  raw}}</span></div><br>
+    <hr>
+    <div class="metadata"><small class="text-muted">Ecrit le {{ jobs.createdAt | date('d/m/Y') }} à
+            {{ jobs.createdAt | date('H.i') }}</small></div>
+</div>
+{% endblock body %}

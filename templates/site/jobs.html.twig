@@ -1,1 +1,39 @@
 {% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="d-flex flex-direction-row">
+    <div class="left">
+        <img class="img-jobs-left" src="http://ressources.tedyware.fr/jobs.png" alt="">
+
+    </div>
+
+    <div class="right d-flex flex-direction-row flex-wrap">
+
+        {% for jobs in jobs %}
+
+        <article class="jobs">
+            <img class="banner-jobs" src="{{ jobs.picture }}">
+            <h3 class="title-jobs">{{ jobs.title }}</h3>
+            <div class="content-jobs">
+                {{ jobs.content|u.truncate(150, '...')| raw}}
+            </div>
+            <a href="{{ path('show_jobs', {'id': jobs.id} ) }}" class="btn-continued btn btn-warning">Lire la suite</a>
+            <hr>
+            <div class="metadata"><small class="text-muted">Ecrit le {{ jobs.createdAt | date('d/m/Y') }} à
+                    {{ jobs.createdAt | date('H.i') }}</small></div>
+            <a href="{{ path('edit_jobs', {'id': jobs.id}) }}" class="btn btn-warning">Modifier</a>
+            <a href="{{ path('delete_jobs', {'id': jobs.id}) }}" class="btn btn-danger">Supprimer</a>
+        </article>
+
+
+
+        {% endfor %}
+
+
+    </div>
+</div>
+
+
+
+{% endblock body %}

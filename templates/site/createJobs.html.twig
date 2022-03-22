@@ -1,0 +1,46 @@
+ {% extends "base.html.twig" %}
+
+ {% block body %}
+
+ <style>
+     h1 {
+         margin-top: 100px;
+     }
+
+     .btn {
+         margin-top: 20px;
+     }
+ </style>
+
+ <div class="container">
+     <h1 class="title">{% if editMode %}
+         Modifier une offre d'emploi
+         {% else %}
+         Ajouter une offre d'emploi
+         {% endif %}</h1>
+     {{  form_start(formJobs) }}
+     {{form_row(formJobs.title, {'label': 'Nom du job',
+     'attr': {'placeholder': "Développeur, Concepteur..."}})}}
+     {{form_row(formJobs.picture, {'label': "Image",
+     'attr': {'placeholder': "URL de l'image"}})}}
+     {{form_row(formJobs.content, {'label': 'Description',
+     'attr': {'placeholder': "En quoi consiste le travail"}})}}
+     {{form_row(formJobs.mission, {'label': 'Mission',
+     'attr': {'placeholder': "Les missions que l'employé pourrais faire"}})}}
+     {{form_row(formJobs.technologie, {'label': 'Technos',
+     'attr': {'placeholder': "Symfony, HTML, React, JAVA..."}})}}
+     {{form_row(formJobs.search_profile, {'label': 'Profil Recherché',
+     'attr': {'placeholder': "Profil"}})}}
+     {{form_row(formJobs.contract, {
+     'attr': {'placeholder': "Type de Contrat"}})}}
+     <button type="submit" class="btn btn-success">
+         {% if editMode %}
+         Enregistrer
+         {% else %}
+         Ajouter un job
+         {% endif %}
+     </button>
+     {{  form_end(formJobs) }}
+ </div>
+
+ {% endblock %}
