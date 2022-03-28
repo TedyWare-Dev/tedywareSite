@@ -35,10 +35,10 @@ body, html {
 .active:hover {
   background-color: $yellow-dark;
 }
-footer {
-  // margin-top: 100px;
-  background-color: $white;
-}
+// footer {
+//   // margin-top: 100px;
+//   background-color: $white;
+// }
 
 // asso template
 
@@ -73,14 +73,11 @@ img.asso {
   text-align: center;
   margin-top: 50px !important;
 }
-.sub-sub-title{
+h3{
   font-size: 35px;
   font-family: $font-title;
   text-align: center;
   margin-top: 50px !important;
-  // margin-left: 20%;
-  // margin-right: 20%;
-  font-weight: bold;
   border-radius: 10px;
 }
 
@@ -169,4 +166,14 @@ hr{
 .img-jobs-left{
   height: 100%;
   width: 100%;
+}
+
+.blog{
+  margin-top: 100px !important;
+}
+.btn-mg-bottom{
+  margin-bottom: 20px;
+}
+.actu{
+  background-color: #29345a !important;
 }

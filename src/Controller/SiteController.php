@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Jobs;
+use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -124,6 +125,20 @@ class SiteController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute("jobs");
+    }
+
+    /**
+     * affichage des article du blog sous forme de card
+     * @Route("/blog", name="blog")
+     */
+    public function blog(ArticleRepository $repoArticle): Response
+    {
+        $articles = $repoArticle->findAll();
+        return $this->render('site/blog.html.twig', [
+            'page_name' => 'Blog',
+            'articles' => $articles,
+
+        ]);
     }
 
 
