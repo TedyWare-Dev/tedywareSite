@@ -1,17 +1,23 @@
 // Variables
 // Colors
+// Theme Light
 $yellow: #ee9b00;
-$yellow-dark: #d18800;
-$black: #001219;
-$white: #fff;
-$lightgrey: rgb(245, 245, 245);
-$darkblue : #1e2334;
+$black: #001219; // font color
+$white: #fff; // background-color
+// Theme Dark
+$darkblue: #1e2334; // Background
+$lightblue: #29345a; // Card
+$darkyellow: #d18800; // Title
+$grey: #b6b4ca;
+
 // font import
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-$font-title: "Comfortaa", cursive;
-
+$Comfortaa: "Comfortaa", cursive;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+$Montserrat: "Montserrat", sans-serif;
 // Common Component 'no responsive'
-body, html {
+body,
+html {
   background-color: $white;
   scrollbar-color: $yellow $white;
   scrollbar-width: auto;
@@ -33,7 +39,7 @@ body, html {
   color: $black !important;
 }
 .active:hover {
-  background-color: $yellow-dark;
+  background-color: $darkyellow;
 }
 // footer {
 //   // margin-top: 100px;
@@ -65,17 +71,17 @@ img.asso {
 
 .title {
   font-size: 80px;
-  font-family: $font-title;
+  font-family: $Comfortaa;
 }
 .sub-title {
   font-size: 60px;
-  font-family: $font-title;
+  font-family: $Comfortaa;
   text-align: center;
   margin-top: 50px !important;
 }
-h3{
+h3 {
   font-size: 35px;
-  font-family: $font-title;
+  font-family: $Comfortaa;
   text-align: center;
   margin-top: 50px !important;
   border-radius: 10px;
@@ -90,29 +96,34 @@ h3{
   margin-top: 30px;
 }
 
-span.yellow{
+span.yellow {
   color: $yellow;
   transition: 0.2s;
   padding-left: 5px;
   padding-right: 5px;
   margin-top: -100px;
-  
+
   border-radius: 50px;
 }
-span.yellow:hover{
+span.yellow:hover {
   transition: 0.2s;
   background-color: $yellow;
   color: white;
-  
 }
-
-
+span.yellow-bg {
+  background-color: $yellow;
+  color: white;
+  border-radius: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 3px;
+}
 
 // card-jobs
 .jobs {
   height: auto;
   width: 450px;
-  background-color: $lightgrey;
+  background-color: $white;
   border-radius: 30px;
   margin: 30px;
   margin-top: 80px;
@@ -128,7 +139,7 @@ span.yellow:hover{
   margin-right: 38%;
   margin-bottom: 10px;
 }
-.title-jobs{
+.title-jobs {
   text-align: center;
 }
 
@@ -146,7 +157,7 @@ span.yellow:hover{
   padding-right: 30px;
   padding-bottom: 10px;
 }
-hr{
+hr {
   margin: 0 !important;
   padding: 0;
 }
@@ -156,24 +167,156 @@ hr{
   width: 30%;
   height: 100vh;
 }
-.right{
+.right {
   padding-left: 5%;
   width: 70%;
   height: 100vh;
   overflow: scroll;
   overflow-x: hidden;
 }
-.img-jobs-left{
+.img-jobs-left {
   height: 100%;
   width: 100%;
 }
 
-.blog{
+.blog {
   margin-top: 100px !important;
 }
-.btn-mg-bottom{
+
+.container-card {
+  height: 200px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.container-card > a {
+  text-decoration: none;
+}
+
+.card-blog {
+  background-color: #29345a;
+  border-radius: 20px;
+  margin-top: 20px;
   margin-bottom: 20px;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  color: $white;
 }
-.actu{
-  background-color: #29345a !important;
+
+.card-blog:hover {
+  transition: 0.3s ease-in-out;
+  margin-top: 10px;
+  box-shadow: 5px 5px 3px #364785;
 }
+
+.card-blog > img {
+  height: 170px;
+  width: 170px;
+  margin-top: 20px;
+  margin-right: 15px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+.article-title-card {
+  margin-top: 15px;
+  margin-left: 25px;
+  color: $yellow;
+  font-family: $Montserrat;
+  font-size: 2rem;
+  height: 100px;
+  font-weight: bold;
+}
+
+.container-text-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.category {
+  color: $black;
+  background-color: $yellow;
+  width: auto;
+  border-radius: 30px;
+  width: 13%;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 20px;
+}
+
+.date {
+  font-size: 20px;
+  font-family: $Comfortaa;
+  color: $grey;
+  text-align: right;
+  margin-right: 20px;
+}
+
+// showBlog
+
+article.showArticle {
+  background-color: $lightblue;
+  height: auto;
+  width: 100%;
+  border-radius: 20px;
+
+  h1.titleArticle {
+    color: $darkyellow;
+    font-size: 2.5rem;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 80px;
+    font-family: $Montserrat;
+  }
+  .infoBar {
+    color: $grey;
+    font-size: 1.2rem;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    border-radius: 30px;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 30px;
+  }
+  p {
+    color: $white;
+    text-align: justify;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    font-size: 1.125rem;
+    font-family: $Montserrat;
+    padding-bottom: 2rem;
+  }
+
+  .profil {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20%;
+    color: $white;
+    font-family: $Montserrat;
+  }
+
+  .profilPicture {
+    aspect-ratio: 1/1;
+    width: 4%;
+    margin-top: -10px;
+    margin-left: 10px;
+  }
+}
+

@@ -1,32 +1,38 @@
 {% extends "base.html.twig" %}
 
-
-
 {% block body %}
 <style>
-  
-    body, html{
+    body,
+    html {
         background-color: #1e2334;
     }
-    h1{
-        color: #2a3455;
+
+    h1 {
+        color: #3f5499;
+    }
+
+    .card-text {
+        height: 20px;
+        padding-left: 80%;
     }
 </style>
 <div class="blog d-flex flex-direction-row flex-wrap container">
-    <h1 class="title">Nos dernieres <span class="yellow"> actus</span></h1>
+    <h1 class="title">Nos dernieres <span class="yellow"> actus</span></h1><br>
     {% for article in articles %}
-    <div class="mg-auto card actu">
-        <img class="card-img-top" src="{{ article.pictureArticle }}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">{{ article.paragraphe | u.truncate(150, '...') | raw}}</p>
-            <button href="" class="btn-mg-bottom btn btn-warning">Lire la suite</button>
-
-            <hr>
-            <p class="card-text"><small class="text-muted">{{ article.createdAt | date('d/m/Y')  }} dans la catégorie
-                    <span class="yellow">{{ article.category.title }}</span> </small></p>
-        </div>
+    <div class="container-card">
+        <a href="{{ path('show_blog', {'id': article.id} ) }}">
+            <div class="card-blog">
+                <img src="{{ article.pictureArticle }}">
+                <div class="container-text-card">
+                    <div class="category">{{ article.category.title }}</div>
+                    <h1 class="article-title-card">{{ article.title }}</h1>
+                    <div class="date"><strong>{{ article.createdAt | date('d/m/Y')  }}</strong> •
+                        {{ article.createdAt | date('H:i')}}</div>
+                </div>
+            </div>
+        </a>
     </div>
     {% endfor %}
 </div>
+
 {% endblock body %}

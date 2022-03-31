@@ -2,12 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Jobs;
+use App\Entity\Profil;
+use App\Entity\Spotlight;
 use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
+use App\Repository\SpotlightRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -141,6 +149,88 @@ class SiteController extends AbstractController
         ]);
     }
 
+
+
+    /**
+     * formulaire de creation et modification des articles
+     * @Route("/blog/{id}/edit", name="edit_article")
+     * @Route("/blog/new", name="create_article")
+     */
+    public function formBlog(Article $article = null, Request $request, EntityManagerInterface $manager)
+    {
+
+        if (!$article) {
+            $article = new Article();
+        }
+
+        $formArticle = $this->createFormBuilder($article)
+            ->add('title')
+            ->add('pictureArticle')
+            ->add('paragraphe', CKEditorType::class)
+            ->add('category', EntityType::class, [
+                'class' => Category::class
+            ])
+            ->add('author', EntityType::class, [
+                'class' => Profil::class
+            ])
+            ->add('Spotlight', EntityType::class, [
+                'class' => Spotlight::class
+            ])
+
+
+            ->getForm();
+        $formArticle->handleRequest($request);
+        dump($formArticle);
+        if ($formArticle->isSubmitted() && $formArticle->isValid()) {
+
+            $article->setCreatedAt(new \DateTime());
+            // if ($article->getId()) {
+            // }
+
+            $manager->persist($article);
+            $manager->flush();
+            return $this->redirectToRoute('show_blog', ['id' => $article->getId()]);
+        }
+
+        return $this->render('site/createArticle.html.twig', [
+            'page_name' => 'Ajouter un Article',
+            'formArticle' => $formArticle->createView(),
+            'editMode' => $article->getId() !== null,
+        ]);
+    }
+
+    /**
+     * affichage complet des articles
+     * @Route("/blog/{id}", name="show_blog")
+     */
+    public function show_blog(Article $article, SpotlightRepository $repoSpot): Response
+    {
+
+        $moreArticle = $repoSpot->findBy([
+            'onSpotlight' => '1'
+        ], [], 3, 0);
+        dump($moreArticle);
+
+        return $this->render('site/showBlog.html.twig', [
+            'page_name' => 'Blog',
+            'article' => $article,
+            'moreArticle' => $moreArticle,
+        ]);
+    }
+
+    /**
+     * fonction de suppression de job
+     * @Route("/event/{id}/delete", name="delete_jobs")
+     */
+    public function deleteArticle(int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $article = $entityManager->getRepository(Article::class)->find($id);
+        $entityManager->remove($article);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("blog");
+    }
 
 
     /**

@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<style>
+    body,
+    html {
+        background-color: #1e2334;
+    }
+ 
+</style>
+
+<div class="container">
+    <article class="showArticle">
+        <h1 class="titleArticle">{{ article.title }}</h1>
+        <div class="infoBar"><strong>{{ article.createdAt | date('d/m/Y')  }}</strong> •
+            {{ article.createdAt | date('H:i')}} • <span class="yellow-bg">{{article.category}}</span></div>
+        <img src="{{article.pictureArticle}}">
+        <p>{{ article.paragraphe | raw}}</p>
+        <div class="profil">
+            <span>Publié Par {{article.author}} </span>
+            <img class="profilPicture" src="{{article.author.profilPicture}}">
+        </div>
+
+    </article>
+
+</div>
+
+
+{% endblock body %}

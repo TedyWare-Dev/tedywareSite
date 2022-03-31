@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+<style>
+    h1 {
+        margin-top: 100px;
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <h1 class="title">{% if editMode %}
+        Modifier un article
+        {% else %}
+        Ajouter un article
+        {% endif %}</h1>
+    {{  form_start(formArticle) }}
+    {{form_row(formArticle.title, {'label': 'Titre',
+    'attr': {'placeholder': "titre de l'article"}})}}
+    {{form_row(formArticle.pictureArticle, {'label': "Image",
+    'attr': {'placeholder': "URL de l'image"}})}}
+    {{form_row(formArticle.paragraphe, {'label': 'Contenu',
+    'attr': {'placeholder': "De quoi veux tu parler ?"}})}}
+    {{form_row(formArticle.category, {'label': 'Categorie'})}}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+        Enregistrer
+        {% else %}
+        Ajouter un article
+        {% endif %}
+    </button>
+    {{  form_end(formArticle) }}
+</div>
+
+{% endblock %}

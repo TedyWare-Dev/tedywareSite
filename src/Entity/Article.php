@@ -43,6 +43,16 @@ class Article
      */
     private $category;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="article")
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Spotlight::class, inversedBy="article")
+     */
+    private $spotlight;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,4 +117,33 @@ class Article
 
         return $this;
     }
+
+    public function getAuthor(): ?Profil
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Profil $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getSpotlight(): ?Spotlight
+    {
+        return $this->spotlight;
+    }
+
+    public function setSpotlight(?Spotlight $spotlight): self
+    {
+        $this->spotlight = $spotlight;
+
+        return $this;
+    }
+
+
+
+    
+
 }
