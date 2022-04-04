@@ -16,7 +16,7 @@
         padding-left: 80%;
     }
 </style>
-<div class="blog d-flex flex-direction-row flex-wrap container">
+<article class="blog d-flex flex-direction-row flex-wrap container">
     <h1 class="title">Nos dernieres <span class="yellow"> actus</span></h1><br>
     {% for article in articles %}
     <div class="container-card">
@@ -33,6 +33,6 @@
         </a>
     </div>
     {% endfor %}
-</div>
+</article>
 
 {% endblock body %}

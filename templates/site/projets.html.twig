@@ -1,1 +1,35 @@
 {% extends "base.html.twig" %}
+
+{% block body %}
+<article class="project">
+    {% for projects in projects %}
+
+    <div class="row">
+        <div class="col-3 order-first collaboratorPart">
+            <div class="contentCollaboratorPart">
+                <img class="logoCollaborator" src="{{ projects.collaborator.logo }}" alt="">
+                <h2>{{projects.collaborator.name}}</h2>
+                <p class="point">•</p>
+                <h3>{{projects.type}}</h3>
+                <div class="share">
+                    <a target="_blank" href="{{projects.collaborator.website}}">Voir le site</a>
+                    <a target="_blank" href="{{projects. collaborator.facebook}}"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a target="_blank" href="{{projects.collaborator.twitter}}"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-9 order-last projectPart">
+            <img class="projectPicture" src="{{ projects.picture }}" alt="">
+            <div class="container">
+                <h3 class="slogan">\\ {{ projects.name }} //</h3>
+                <p class="completionDate"> Date de réalisation : {{ projects.completionDate | date('d/m/Y') }} </p>
+                <p class="description" >{{projects.description}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</article>
+{% endblock body %}

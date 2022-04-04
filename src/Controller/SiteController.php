@@ -9,6 +9,7 @@ use App\Entity\Profil;
 use App\Entity\Spotlight;
 use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
+use App\Repository\ProjectRepository;
 use App\Repository\SpotlightRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -23,7 +24,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class SiteController extends AbstractController
 {
     /**
+     * *page pricipale
      * @Route("/", name="home")
+     * TODO afficher tous les elements requis a la page pricipal
      */
     public function index(): Response
     {
@@ -43,18 +46,22 @@ class SiteController extends AbstractController
     }
 
     /**
+     * *affichage des projets
+     * TODO ajouter la mise en forme et crée des données
      * @Route("/projets", name="projets")
      */
-    public function projets(): Response
+    public function projets(ProjectRepository $repoProjects): Response
     {
+        $projects = $repoProjects->findAll();
         return $this->render('site/projets.html.twig', [
             'page_name' => 'Projets',
+            'projects' => $projects,
         ]);
     }
 
 
     /**
-     * affichage des jobs sous forme de card
+     * *affichage des jobs sous forme de card
      * @Route("/jobs", name="jobs")
      */
     public function jobs(JobsRepository $repoJobs): Response
@@ -68,7 +75,7 @@ class SiteController extends AbstractController
     }
 
     /**
-     * formulaire de creation et modification de job
+     * *formulaire de creation et modification de job
      * @Route("/jobs/{id}/edit", name="edit_jobs")
      * @Route("/jobs/new", name="create_jobs")
      */
@@ -109,7 +116,7 @@ class SiteController extends AbstractController
     }
 
     /**
-     * affichage complet des jobs
+     * *affichage complet des jobs
      * @Route("/jobs/{id}", name="show_jobs")
      */
     public function show_jobs(Jobs $jobs): Response
@@ -122,7 +129,7 @@ class SiteController extends AbstractController
     }
 
     /**
-     * fonction de suppression de job
+     * *fonction de suppression de job
      * @Route("/event/{id}/delete", name="delete_jobs")
      */
     public function deleteEvent(int $id): Response
@@ -152,7 +159,7 @@ class SiteController extends AbstractController
 
 
     /**
-     * formulaire de creation et modification des articles
+     * *formulaire de creation et modification des articles
      * @Route("/blog/{id}/edit", name="edit_article")
      * @Route("/blog/new", name="create_article")
      */
@@ -200,26 +207,19 @@ class SiteController extends AbstractController
     }
 
     /**
-     * affichage complet des articles
+     * *affichage complet des articles
      * @Route("/blog/{id}", name="show_blog")
      */
     public function show_blog(Article $article, SpotlightRepository $repoSpot): Response
     {
-
-        $moreArticle = $repoSpot->findBy([
-            'onSpotlight' => '1'
-        ], [], 3, 0);
-        dump($moreArticle);
-
         return $this->render('site/showBlog.html.twig', [
             'page_name' => 'Blog',
             'article' => $article,
-            'moreArticle' => $moreArticle,
         ]);
     }
 
     /**
-     * fonction de suppression de job
+     * *fonction de suppression de job
      * @Route("/event/{id}/delete", name="delete_jobs")
      */
     public function deleteArticle(int $id): Response
@@ -234,7 +234,9 @@ class SiteController extends AbstractController
 
 
     /**
+     * *page de contact pour TedyWare
      * @Route("/contact", name="contact")
+     * TODO make a contact part
      */
     public function contact(): Response
     {
