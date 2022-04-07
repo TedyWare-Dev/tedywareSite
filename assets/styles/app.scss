@@ -1,6 +1,7 @@
 //+ Colors
 //- Theme Light
 $yellow: #ee9b00;
+$grapefruit: #ee3f54;
 $black: #001219; // font color
 $white: #fff; // background-color
 // Theme Dark
@@ -48,6 +49,7 @@ html {
 }
 
 //-Navbar
+//*OK
 nav {
   nav-item {
     height: 100% !important;
@@ -72,6 +74,7 @@ nav {
 }
 
 //- asso template
+//*OK
 .asso-bloc {
   height: 1400px;
   width: 100%;
@@ -106,6 +109,7 @@ nav {
 }
 
 // -Page jobs
+//*OK
 .Jobs {
   .left {
     width: 30%;
@@ -166,7 +170,7 @@ nav {
 }
 
 //- Page blog
-
+//*OK
 article.blog {
   margin-top: 100px !important;
   h1.title {
@@ -399,10 +403,114 @@ article.project {
         font-size: 1.2rem;
         color: $grey;
       }
-      p.description{
+      p.description {
         color: $lightblue;
         font-size: 1.3rem;
       }
+    }
+  }
+}
+
+//-Page Contact
+//*OK
+article.contact {
+  margin-top: 60px !important;
+  padding-bottom: 50px;
+  height: auto;
+  background: url("http://www.ressources.tedyware.fr/contact/fond-contact.png");
+
+  .containerContactForm {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80%;
+    width: 70%;
+    background: $white;
+    padding: 20px;
+    border-bottom: solid 7px $yellow;
+    border-right: solid 7px $yellow;
+    border-left: solid 7px $grapefruit;
+
+    h1 {
+      background: -webkit-linear-gradient(0.1turn, $grapefruit, $yellow);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: $Montserrat;
+      font-size: 60px;
+      margin-top: 20px;
+    }
+    tr {
+      border: white !important;
+    }
+    .btn-border {
+      background-color: $yellow;
+      border: none;
+      color: #ffffff;
+      display: inline-block;
+      font-size: 1em;
+      font-size: 22px;
+      line-height: 1em;
+      outline: none;
+      padding: 12px 40px 10px;
+      position: relative;
+      text-transform: uppercase;
+      font-weight: 700;
+      &:before,
+      &:after {
+        border-color: transparent;
+        -webkit-transition: all 0.25s;
+        transition: all 0.25s;
+        border-style: solid;
+        border-width: 0;
+        content: "";
+        height: 24px;
+        position: absolute;
+        width: 24px;
+      }
+      &:hover:before,
+      &:hover:after {
+        height: 100%;
+        width: 100%;
+        border-color: $grapefruit;
+      }
+      &:before {
+        border-color: $yellow;
+        border-top-width: 2px;
+        left: 0px;
+        top: -5px;
+      }
+      &:after {
+        border-bottom-width: 2px;
+        border-color: $yellow;
+        bottom: -5px;
+        right: 0px;
+      }
+      &:hover {
+        transition: 0.2s;
+        background-color: $grapefruit;
+      }
+    }
+
+    input,
+    select,
+    .cke_1 {
+      border: 2px solid  $yellow !important;
+      &:focus{
+        border: 2px solid $grapefruit !important;
+        box-shadow: none !important;
+      }
+    }
+    .cke_top {
+      border: none !important;
+      background: $yellow;
+    }
+    .cke_bottom {
+      border: none !important;
+      background: $yellow;
+    }
+    a.cke_button_off:hover,
+    .cke_combo_off:hover {
+      background-color: $white; 
     }
   }
 }

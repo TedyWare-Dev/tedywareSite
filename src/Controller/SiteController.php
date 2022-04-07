@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\Contact;
 use App\Entity\Jobs;
 use App\Entity\Profil;
 use App\Entity\Spotlight;
+use App\Form\ContactFormType;
+use App\Notification\ContactNotification;
 use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
 use App\Repository\ProjectRepository;
@@ -19,7 +22,10 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
+
 
 class SiteController extends AbstractController
 {
@@ -238,10 +244,43 @@ class SiteController extends AbstractController
      * @Route("/contact", name="contact")
      * TODO make a contact part
      */
-    public function contact(): Response
+    public function contact(Request $request, MailerInterface $mailer): Response
     {
+        // $contact = new Contact();
+        $form = $this->createForm(ContactFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $name = $form['name']->getData();
+            $mail = $form['mail']->getData();
+            $messageContent = $form['message']->getData();
+            $phone = $form['phone']->getData();
+            $type = $form['contactType']->getData();
+
+
+
+            $message = (new Email())
+
+                ->from($mail)
+                ->to('contact@tedyware.fr')
+                ->subject($type)
+                ->html(
+                    '<strong> Nom(s) / Entreprise : </strong>' . $name . '<br>' .
+                        '<strong>Email : </strong>' . '<a target"_blank" href="mailto:' . $mail . '">' . $mail . '</a>' . '<br>' .
+                        '<strong>Téléphone : </strong>' . '<a target"_blank" href="tel:' . $phone . '">' . $phone . '</a>'   . '<br>' .
+                        '<strong>Type de la demande : </strong>' . $type . '<br>' . '<br>' .
+                        '<strong>Contenu du message : </strong>' . $messageContent,
+                    'text/html'
+                );
+            $mailer->send($message);
+
+            $this->addFlash('success', 'Votre mail a bien été envoyé !');
+            return $this->redirectToRoute('contact');
+        }
         return $this->render('site/contact.html.twig', [
             'page_name' => 'Contact',
+            'formContact' => $form->createView(),
         ]);
     }
 }
