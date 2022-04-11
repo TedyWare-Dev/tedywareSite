@@ -9,6 +9,10 @@ $darkblue: #1e2334; // Background
 $lightblue: #29345a; // Card
 $darkyellow: #d18800; // Title
 $grey: #b6b4ca;
+//card color
+$skyblue :#7BA7D7;
+$purple :#B87F9E;
+
 
 //- font import
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
@@ -169,7 +173,7 @@ nav {
   }
 }
 
-//- Page blog
+//- Page Blog
 //*OK
 article.blog {
   margin-top: 100px !important;
@@ -494,8 +498,8 @@ article.contact {
     input,
     select,
     .cke_1 {
-      border: 2px solid  $yellow !important;
-      &:focus{
+      border: 2px solid $yellow !important;
+      &:focus {
         border: 2px solid $grapefruit !important;
         box-shadow: none !important;
       }
@@ -510,7 +514,338 @@ article.contact {
     }
     a.cke_button_off:hover,
     .cke_combo_off:hover {
-      background-color: $white; 
+      background-color: $white;
+    }
+  }
+}
+
+//-Home Page
+//TODO all
+article.home {
+  .topImage {
+    video {
+      height: 700px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .overlay {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      .textContent {
+        span {
+          color: $yellow;
+          padding: 3px;
+        }
+        h1 {
+          color: $white;
+          font-family: $Montserrat;
+          font-size: 4rem;
+          margin-top: 20vh;
+          margin-left: 150px;
+          font-weight: bold;
+          width: 55%;
+        }
+        p {
+          color: $white;
+          margin-left: 150px;
+          margin-top: 30px;
+          padding-right: 25%;
+          font-size: 1.3rem;
+        }
+      }
+      img {
+        margin-top: 8%;
+        margin-right: 250px;
+        width: 45%;
+        height: 50%;
+      }
+    }
+  }
+  .projets {
+    height: 70vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    .imgContent {
+      width: 50%;
+      img {
+        margin-top: 10%;
+        margin-left: 10%;
+        height: 70%;
+        aspect-ratio: auto;
+        border-radius: 50px;
+        box-shadow: 5px 5px 0px 0px $yellow;
+        transition: 0.3s;
+
+        &:hover {
+          box-shadow: 15px 15px 0px 0px $yellow;
+          transform: scale(1.01);
+        }
+      }
+    }
+    .textContent {
+      width: 50%;
+      padding-right: 10%;
+      h2 {
+        color: $yellow;
+        margin-top: 17.5%;
+        margin-bottom: 5%;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      p {
+        text-align: justify;
+        color: $lightblue;
+        font-size: 1.5rem;
+        line-height: 180%;
+      }
+      span {
+        color: $yellow;
+        padding: 3px;
+        &:hover {
+          background-color: $yellow;
+          color: $white;
+          border-radius: 50px;
+          transition: 0.1s;
+        }
+      }
+      a {
+        height: 35px;
+        text-align: center;
+        text-decoration:none ;
+        width: 200px;
+        border: 2px solid $yellow;
+        background-color: $white;
+        color: $lightblue;
+        font-size: 1.2rem;
+        font-family: $Montserrat;
+        border-radius: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        &:hover {
+          background-color: $yellow;
+          color: $white;
+          transition: 0.1s;
+        }
+      }
+    }
+  }
+  .securite {
+    margin-top: 50px;
+    h2 {
+      text-align: center;
+      color: $yellow;
+      font-family: $Montserrat;
+      width: 50%;
+      display: block;
+      margin: auto;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    p {
+      font-size: 1.5rem;
+      width: 80%;
+      margin-top: 30px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  }
+  .confiance {
+    height: 60vh;
+    background-color: $yellow;
+    margin: 0;
+    margin-top: 100px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    .textContent {
+      width: 50%;
+      h2 {
+        text-align: center;
+        color: $lightblue;
+        font-family: $Montserrat;
+        width: 50%;
+        display: block;
+        margin-top: 24%;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      p {
+        font-size: 1.5rem;
+        width: 80%;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        color: $white;
+      }
+    }
+    .videoContent {
+      video {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .skill {
+    height: 50vh;
+    background: url("http://ressources.tedyware.fr/main/contact-bg.png");
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .boxSkill {
+      height: 75%;
+      width: 25%;
+      background-color: $white;
+      box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.25);
+      margin-left: 4%;
+      margin-right: 4%;
+      border-radius: 10px;
+      transition: 0.3s;
+      a {
+        text-decoration: none;
+        font-size: 1.3rem;
+        margin-left: 32.5%;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      img {
+        height: 70px;
+        aspect-ratio: 1/1;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -30px;
+        margin-bottom: 30px;
+        background-color: $white;
+        box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.25);
+        padding: 10px;
+        border-radius: 50px;
+      }
+      h3 {
+        font-family: $Montserrat;
+        text-align: center;
+      }
+      .design{
+        color: $yellow;
+      }
+      .web{
+        color: $skyblue;
+      }
+      .mobile{
+        color: $purple;
+      }
+      p {
+        margin-top: 30px;
+        padding-left: 10%;
+        padding-right: 10%;
+        font-size: 1.5rem;
+        text-align: center;
+        color: $lightblue;
+      }
+   
+    }
+  }
+  .contact{
+    height: 30vh;
+    background-color: $lightblue;
+    display: flex;
+    flex-direction: row;
+    .contactContent{
+      width: 50%;
+      h2{
+        color: $yellow;
+        font-family: $Montserrat;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        text-transform: uppercase;
+      }
+      p{
+        padding-left: 20%;
+        padding-right: 20%;
+        font-size: 1.3rem;
+        color: $white;
+        text-align: center;
+      }
+      a {
+        height: 35px;
+        width: 200px;
+        border: 2px solid $yellow;
+        background-color: $white;
+        color: $lightblue;
+        font-size: 1.2rem;
+        font-family: $Montserrat;
+        text-align: center;
+        align-self: center;
+        text-decoration: none;
+        border-radius: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+        &:hover {
+          background-color: $yellow;
+          color: $white;
+          transition: 0.1s;
+        }
+      }
+    }
+    .actuContent{
+      width: 50%;
+      h2{
+        color: $yellow;
+        font-family: $Montserrat;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 30px;
+        text-transform: uppercase;
+      }
+      p{
+        padding-left: 20%;
+        padding-right: 20%;
+        font-size: 1.3rem;
+        color: $white;
+        text-align: center;
+      }
+      a {
+        height: 35px;
+        width: 200px;
+        border: 2px solid $yellow;
+        background-color: $white;
+        color: $lightblue;
+        font-size: 1.2rem;
+        font-family: $Montserrat;
+        text-align: center;
+        border-radius: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-decoration: none;
+        padding: auto;
+        margin-top: 30px;
+        &:hover {
+          background-color: $yellow;
+          color: $white;
+          transition: 0.1s;
+        }
+      }
     }
   }
 }

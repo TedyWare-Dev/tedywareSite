@@ -1,9 +1,100 @@
 {% extends 'base.html.twig' %}
 
-{% block javascript %}
-<script src="{{ js/parallax.js }}"></script>
-{% endblock %}
-
 {% block body %}
+
+<article class="home">
+    <div class="topImage">
+        <video autoplay muted loop id="">
+            <source src="http://ressources.tedyware.fr/main/code.mp4" type="video/mp4">
+        </video>
+        <div class="overlay">
+            <div class="textContent">
+                <h1>Agence de <span>développement web</span> sur mesure</h1>
+                <p> <span>TedyWare</span> est votre meilleure agence de <span>développement sur-mesure en France</span>
+                    , elle met ses
+                    <span>experts</span> à votre disposition pour <span>analyser vos besoins</span>, développer votre
+                    <span>solution spécifique,
+                        application web, logiciel, plateforme web.</span></p>
+            </div>
+            <img src="http://ressources.tedyware.fr/main/Logo_TDW_trs.png" alt="">
+        </div>
+        <div class="projets">
+            <div class="imgContent">
+                <img src="http://ressources.tedyware.fr/main/equipe.jpg" alt="">
+            </div>
+            <div class="textContent">
+                <h2>Un projet ?</h2>
+                <p>Vous avez une <span>entreprise</span> ? Vous cherchez une <span>agence de développement</span> des
+                    projets web sur mesure en
+                    France pour mettre en place <span>un logiciel, une application web ou plateforme en ligne</span>
+                    contenant des
+                    besoins spécifiques ? Une solution <span>sécurisée, élégante, performante</span> et développée avec
+                    les <span>nouvelles
+                        technologies</span> ?</p>
+                <a href="{{ path('contact') }}"><i class="fa-solid fa-envelope"></i> Nous Contacter</a>
+            </div>
+        </div>
+        <div class="securite">
+            <h2>UN PARTENAIRE DIGITAL QUI VOUS RASSURE SUR LA CONFIDENTIALITE DE VOS données</h2>
+            <p> Nous sommes conscients que les informations et données confidentielles sont nombreuses dans la vie des
+                affaires, pour cette raison, nous insistons sur la protection de l’idée de votre projet à travers un
+                accord de confidentialité présenté à chaque client avant la réception de son cahier des charges.
+            </p>
+        </div>
+        <div class="confiance">
+            <div class="textContent">
+                <h2>Soyez tranquille !</h2>
+                <p>À présent votre projet est entre de bonne mains, chez TedyWare nos partenaires peuvent nous faire
+                    confiance !</p>
+            </div>
+            <div class="videoContent">
+                <video autoplay muted loop src="http://ressources.tedyware.fr/main/confiance.mp4"></video>
+            </div>
+
+        </div>
+
+        <div class="skill">
+            <div class="boxSkill">
+                <img src="http://ressources.tedyware.fr/main/design.png" alt="">
+                <h3 class="design">Maquette et UI /UX</h3>
+                <p>Trois semaines pour visualiser votre application.</p>
+                <a class="design" href="{{ path('projets') }}">Voir nos projets <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="boxSkill">
+                <img src="http://ressources.tedyware.fr/main/source-code.png" alt="">
+                <h3 class="web">Développement Web</h3>
+                <p>Votre site construit
+                    suivant trois exigences : rapidité, qualité, sécurité.</p>
+                <a class="web" href="{{ path('projets') }}">Voir nos projets <i class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+
+            <div class="boxSkill">
+                <img src="http://ressources.tedyware.fr/main/mobile.png" alt="">
+                <h3 class="mobile">Développement mobile</h3>
+                <p>Une application ou un site mobile ? Faites nous part de votre projet.</p>
+                <a class="mobile" href="{{ path('projets') }}">Voir nos projets <i
+                        class="fa-solid fa-arrow-right"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="contact">
+        <div class="contactContent">
+            <h2>Nous envoyer un message</h2>
+            <p>Parlez nous de votre projet et prenez rendez-vous avec l’un de nos spécialistes.</p>
+        <a href="{{ path('contact') }}"><i class="fa-solid fa-envelope"></i> Nous Contacter</a>
+        </div>
+        <div class="actuContent">
+            <h2>Nos dernieres actus</h2>
+            <p>Venez voir nos dernieres actualitées !</p>
+        <a href="{{ path('blog') }}"><i class="fa-solid fa-blog"></i> Nos actus</a>
+        </div>
+    </div>
+
+</article>
 
 {% endblock %}
