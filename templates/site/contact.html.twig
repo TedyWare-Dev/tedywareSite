@@ -2,27 +2,59 @@
 
 {% block body %}
 <article class="contact">
-    {{  form_start(formContact) }}
-    <div class="containerContactForm">
+
+    <div class="container-fluid">
         <h1>Nous contacter</h1>
-        <table class="table">
-            <tr>
-                <td>{{form_row(formContact.name, {})}}</td>
-                <td>{{form_row(formContact.contactType, {})}}</td>
-            </tr>
-            <tr>
-                <td>{{form_row(formContact.mail, {})}}</td>
-                <td>{{form_row(formContact.phone, {})}}</td>
-            </tr>
-        </table>
-        {{form_row(formContact.message, {})}}
-
-
-
-
-
-        <button type="submit" class="btn-border">Envoyer</button>
+        {{  form_start(formContact) }}
+        <div class="formContact">
+            <div class="boxContact">
+                {{form_row(formContact.name, {
+                    'attr': {'class': 'input'}
+                })}}
+                {{form_row(formContact.mail, {
+                    'attr': {'class': 'input'}
+                })}}
+                {{form_row(formContact.phone, {
+                    'attr': {'class': 'input'}
+                })}}
+                <button type="submit" class="btn-border">Envoyer</button>
+            </div>
+            <div class="boxContact">
+                {{form_row(formContact.contactType, {
+                    'attr': {'class': 'input'}
+                })}}
+                {{form_row(formContact.message, {
+                    'attr': {'class': 'textbox'}
+                })}}
+            </div>
+        </div>
+        {{  form_end(formContact) }}
     </div>
-    {{  form_end(formContact) }}
+
+    <div class="contactInfo">
+        <div class="boxContact">
+            <h2>Quelques Informations</h2>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i><a href="tel:+33 6 12 34 56 78"> +33 6 12 34 56 78</a></li>
+                <li><i class="fa-solid fa-at"><a href="mailto:contact@tedyware.fr"></i> contact@tedyware.fr</a></li>
+                <li><i class="fa-solid fa-location-dot"></i> Heillecourt, 54180 - France </li>
+            </ul>
+        </div>
+        <div class="boxContact">
+            <h2>Suivez-nous !</h2>
+            <div class="social">
+                <a href="https://www.facebook.com/tedywaredev/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com/TedyWare"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/tedywaredev/"><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+
+            </div>
+        </div>
+    </div>
+    <div id="plan" class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10543.581466776386!2d6.187914094713665!3d48.650116844450224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479498c2b2b59117%3A0xeda2eedb69dd81ec!2s54180%20Heillecourt!5e0!3m2!1sfr!2sfr!4v1649849366872!5m2!1sfr!2sfr" style="border:none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+
 </article>
 {% endblock body %}

@@ -1,40 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<article class="association">
+    <img src="http://ressources.tedyware.fr/association/ban-tedyware.png">
+    <div class="contentAsso container">
 
-<div class="asso-bloc d-flex flex-wrap flex-row">
-    {# Parti haute de la page 
-    "Qui sommes nous ?"
-    #}
-    <div class="asso-box">
-        <img class="asso" src="http://www.ressources.tedyware.fr/association/im1who.png" alt="">
-    </div>
+        <div class="who">
+            <h2>Qui sommes-nous ?</h2>
+            <p>TedyWare est spécialisée dans la création de sites internet nouvelles
+                générations. Notre equipe créatrice saura vous demontré son savoir-faire son notre expérience leur
+                permettant de vous proposer des solutions
+                novatrices et adaptées à tous vos projets.
+                Ce qui nous passionne par dessus tout c'est imaginer et donner vie à vos idées !</p>
+            <p>Particulier ou professionnel, votre projet nous intéresse !</p>
+        </div>
+        <h2>Notre équipe</h2>
+        <div class="profil">
+            {% for profil in profil %}
+            <div class="card">
+                <img src="{{profil.profilPicture}}">
+                <h3>{{profil.name}}</h3>
+                <p>{{profil.role}}</p>
+                <a target="_blank" href="{{profil.portfolio}}">
+                    <div class="portfolio">
+                        <h5>Portfolio</h5>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
 
-    <div style="background-color: #ee9b00;" class="asso-box">
-        <h2 class="sub-title">Qui sommes-nous ?</h2>
-        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam facere doloremque
-            voluptatem, quisquam tempora explicabo eos blanditiis expedita tempore distinctio. Iste fugiat vero
-            veritatis corrupti hic explicabo eaque maiores?</p>
-        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam facere doloremque
-            voluptatem, quisquam tempora explicabo eos blanditiis expedita tempore distinctio. Iste fugiat vero
-            veritatis corrupti hic explicabo eaque maiores?</p>
-    </div>
-    {# Parti basse de la page 
-    "Pourquoi une association ?"
-    #}
 
-    <div style="background-color: #ee9b00;" class="asso-box">
-        <h2 class="sub-title">Pourquoi une association ?</h2>
-        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam facere doloremque
-            voluptatem, quisquam tempora explicabo eos blanditiis expedita tempore distinctio. Iste fugiat vero
-            veritatis corrupti hic explicabo eaque maiores?</p>
-        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam quibusdam facere doloremque
-            voluptatem, quisquam tempora explicabo eos blanditiis expedita tempore distinctio. Iste fugiat vero
-            veritatis corrupti hic explicabo eaque maiores?</p>
     </div>
-    <div class="asso-box">
-        <img class="asso" src="http://www.ressources.tedyware.fr/association/im2who.png" alt="">
-    </div>
+    <div class="contactInfo">
+        <div class="boxContact">
+            <h2>Quelques Informations</h2>
+            <ul>
+                <li><i class="fa-solid fa-phone"></i><a href="tel:+33 6 12 34 56 78"> +33 6 12 34 56 78</a></li>
+                <li><i class="fa-solid fa-at"><a href="mailto:contact@tedyware.fr"></i> contact@tedyware.fr</a></li>
+                <li><i class="fa-solid fa-location-dot"></i> Heillecourt, 54180 - France </li>
+            </ul>
+        </div>
+        <div class="boxContact">
+            <h2>Suivez-nous !</h2>
+            <div class="social">
+                <a href="https://www.facebook.com/tedywaredev/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com/TedyWare"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/tedywaredev/"><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
 
-</div>
+            </div>
+        </div>
+    </div>
+</article>
 {% endblock body %}

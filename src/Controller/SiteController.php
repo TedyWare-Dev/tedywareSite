@@ -12,6 +12,7 @@ use App\Form\ContactFormType;
 use App\Notification\ContactNotification;
 use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
+use App\Repository\ProfilRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\SpotlightRepository;
 use DateTime;
@@ -32,7 +33,6 @@ class SiteController extends AbstractController
     /**
      * *page pricipale
      * @Route("/", name="home")
-     * TODO afficher tous les elements requis a la page pricipal
      */
     public function index(): Response
     {
@@ -44,16 +44,17 @@ class SiteController extends AbstractController
     /**
      * @Route("/association", name="association")
      */
-    public function association(): Response
+    public function association(ProfilRepository $repoProfil): Response
     {
+        $profil = $repoProfil->findAll();
         return $this->render('site/association.html.twig', [
             'page_name' => 'Association',
+            'profil' => $profil,
         ]);
     }
 
     /**
      * *affichage des projets
-     * TODO ajouter la mise en forme et crée des données
      * @Route("/projets", name="projets")
      */
     public function projets(ProjectRepository $repoProjects): Response
@@ -281,6 +282,17 @@ class SiteController extends AbstractController
         return $this->render('site/contact.html.twig', [
             'page_name' => 'Contact',
             'formContact' => $form->createView(),
+        ]);
+    }
+        /**
+     * *affichage des jobs sous forme de card
+     * @Route("/mentions", name="mentions")
+     */
+    public function mentions(): Response
+    {
+        
+        return $this->render('site/mentions.html.twig', [
+            'page_name' => 'Mentions Légales',
         ]);
     }
 }

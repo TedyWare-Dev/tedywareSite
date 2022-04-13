@@ -34,6 +34,16 @@ class Profil
      */
     private $article;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $portfolio;
+
     public function __construct()
     {
         $this->article = new ArrayCollection();
@@ -101,6 +111,30 @@ class Profil
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getPortfolio(): ?string
+    {
+        return $this->portfolio;
+    }
+
+    public function setPortfolio(?string $portfolio): self
+    {
+        $this->portfolio = $portfolio;
+
+        return $this;
     }
 
 }

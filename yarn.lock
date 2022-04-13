@@ -959,6 +959,11 @@
     "error-stack-parser" "^2.0.0"
     "string-width" "^4.2.3"
 
+"@popperjs/core@^2.11.5":
+  "integrity" "sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw=="
+  "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
+  "version" "2.11.5"
+
 "@symfony/stimulus-bridge@^3.0.0":
   "integrity" "sha512-efoQP0DWIXNOh9zPN5JUEokTMQyFBbVO5ioUQIRRAw9y0Qj6bv+mshAnljUzI7xupTZu9zNH4XjY1d0tnl/n9A=="
   "resolved" "https://registry.npmjs.org/@symfony/stimulus-bridge/-/stimulus-bridge-3.0.0.tgz"
