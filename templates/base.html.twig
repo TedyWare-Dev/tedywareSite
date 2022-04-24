@@ -69,7 +69,7 @@
                         href="{{ path('association') }}">Association</a>
                 </li>
                 <li class="nav-item me-2 ms-2">
-                    <a class="nav-link {% if page_name == 'Pojets' %} active {% else %} inactive {% endif %} "
+                    <a class="nav-link {% if page_name == 'Projets' %} active {% else %} inactive {% endif %} "
                         href="{{ path('projets') }}">Projets</a>
                 </li>
             </ul>
@@ -87,10 +87,17 @@
                     <a class="nav-link  {% if page_name == 'Contact' %} active {% else %} inactive {% endif %}  "
                         href="{{ path('contact') }}">Contact</a>
                 </li>
+                {% if not app.user %}
                 <li class="nav-item me-2 ms-2">
                     <a class="nav-link {% if page_name == 'Connexion' %} active {% else %} inactive {% endif %}"
-                        href="#">Connexion</a>
+                        href="{{ path('security_login') }}">Connexion</a>
                 </li>
+                {% else %}
+                 <li class="nav-item me-2 ms-2">
+                     <a class="nav-link"
+                         href="{{ path('security_logout') }}">Deconnexion</a>
+                 </li>
+                 {% endif %}
 
             </ul>
         </div>

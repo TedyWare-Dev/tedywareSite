@@ -689,12 +689,12 @@ article.blog {
       border-radius: 20px;
       margin-top: 20px;
       margin-bottom: 20px;
-      transition: 0.3s ease-in-out;
+      transition: 0.15s ease-in-out;
       display: flex;
       flex-direction: row;
       color: $white;
       &:hover {
-        transition: 0.3s ease-in-out;
+        transition: 0.15s ease-in-out;
         margin-top: 10px;
         box-shadow: 5px 5px 3px #364785;
       }
@@ -1056,5 +1056,14 @@ article.contact {
       height: 100%;
       width: 100%;
     }
+  }
+}
+
+//-Page Connexion
+//*OK
+article.connexion{
+  margin-top: 70px;
+  bloc.connexion{
+
   }
 }
