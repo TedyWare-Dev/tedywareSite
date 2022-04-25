@@ -3,11 +3,13 @@
 {% block body %}
 <article class="connexion">
     <bloc class="connexion">
-        <h1>Connexion</h1>
+        <h1>Espace connexion</h1>
 
         <form action="{{ path('security_login') }}" method="post">
             <div class="form-group">
+                <label>Adresse Email</label>
                 <input class="form-control" type="text" name="_username" placeholder="Email" required>
+                <label>Mot de passe</label>
                 <input class="form-control" type="password" name="_password" placeholder="Mot de passe" required>
             </div>
             <div class="form-group">

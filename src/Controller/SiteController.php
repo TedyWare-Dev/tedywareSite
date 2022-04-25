@@ -239,7 +239,6 @@ class SiteController extends AbstractController
     /**
      * *page de contact pour TedyWare
      * @Route("/contact", name="contact")
-     * TODO make a contact part
      */
     public function contact(Request $request, MailerInterface $mailer): Response
     {
