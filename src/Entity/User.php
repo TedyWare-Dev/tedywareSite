@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -47,6 +49,22 @@ class User implements UserInterface
      * @Assert\EqualTo(propertyPath="password", message="Vos mot de passe ne correspondent pas")
      */
     public $confirm_password;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $role;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=OnGoingProject::class, mappedBy="user")
+     */
+    private $onGoingProjects;
+
+    public function __construct()
+    {
+        $this->onGoingProjects = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,5 +123,44 @@ class User implements UserInterface
     public function getUserIdentifier()
     {
         return $this->getUsername();
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OnGoingProject>
+     */
+    public function getOnGoingProjects(): Collection
+    {
+        return $this->onGoingProjects;
+    }
+
+    public function addOnGoingProject(OnGoingProject $onGoingProject): self
+    {
+        if (!$this->onGoingProjects->contains($onGoingProject)) {
+            $this->onGoingProjects[] = $onGoingProject;
+            $onGoingProject->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOnGoingProject(OnGoingProject $onGoingProject): self
+    {
+        if ($this->onGoingProjects->removeElement($onGoingProject)) {
+            $onGoingProject->removeUser($this);
+        }
+
+        return $this;
     }
 }

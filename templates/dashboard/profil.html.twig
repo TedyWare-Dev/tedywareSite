@@ -1,0 +1,32 @@
+{% extends "projectPannel.html.twig" %}
+{% block body %}
+<article class="addProfil">
+    <h1>Utilisateurs</h1>
+    <a href="{{ path('security_registration') }}" class="btn btn-primary add">Ajouter un utilisateur</a>
+    <table class="table table-striped table-hover table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Lien Photo de profil</th>
+                <th scope="col">Role</th>
+                <th scope="col">Lien Portfolio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in user %}
+            <tr>
+                <td>{{profil.id}}</td>
+                <td>{{profil.name}}</td>
+                <td>{{profil.profilPicture}}</td>
+                <td>{{profil.role}}</td>
+                <td>{{profil.portfolio}}</td>
+                <td>
+                    <a href="{{ path('delete_profil', {'id': profil.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</article>
+{% endblock %}

@@ -4,6 +4,7 @@ $yellow: #ee9b00;
 $grapefruit: #ee3f54;
 $black: #001219; // font color
 $white: #fff; // background-color
+$lightgrey: #fff;
 //- Theme Dark
 $darkblue: #1e2334; // Background
 $lightblue: #29345a; // Card
@@ -1065,8 +1066,7 @@ article.connexion {
   margin-top: 70px;
   padding-top: 150px;
   padding-bottom: 100px;
-  margin-bottom: 100px;
-  background-color: $lightblue;
+  background: url("http://ressources.tedyware.fr/connexion/fond-connexion.png");
   bloc.connexion {
     height: 500px;
     border-radius: 7px;
@@ -1081,7 +1081,7 @@ article.connexion {
     h1 {
       color: $white;
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-family: $Montserrat;
       text-transform: uppercase;
     }
@@ -1090,8 +1090,9 @@ article.connexion {
       margin-left: auto;
       margin-right: auto;
       margin-top: 70px;
-      background-color: $yellow;
-      color: $lightblue;
+      width: 100%;
+      background-color: $lightblue;
+      color: $white;
       font-size: 1.7rem;
       border: none;
       border: 3px solid $lightblue;
@@ -1100,9 +1101,10 @@ article.connexion {
       font-family: $Montserrat;
       border-radius: 7px;
       &:hover {
-        background-color: $lightblue;
+        background-color: $darkblue;
+        border-color: $darkblue;
         color: $white;
-        scale: 1.1;
+        scale: 1.05;
       }
     }
     input {
@@ -1112,24 +1114,163 @@ article.connexion {
       margin-bottom: 20px;
       transition: 0.2s;
       border: none;
-      border-radius: 20px;
-      box-shadow: $black  1px 1px 3px 0px;
+      border-radius: 7px;
       &:focus {
         box-shadow: none;
         border: 3px solid $lightblue;
-        box-shadow: $black inset 1px 1px 3px 0px;
         background-color: $lightblue;
         color: $white;
       }
-     
     }
     label {
       font-size: 1.5rem;
       color: $white;
       font: $Montserrat;
       &:nth-child(1) {
-        margin-top: 50px;
+        margin-top: 25px;
       }
+    }
+  }
+}
+
+//-Pannel
+//*OK
+article.pannel {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+  .sidebar {
+    height: 100%;
+    width: 15%;
+    background-color: $lightblue;
+    display: flex;
+    flex-direction: column;
+    .tedyware {
+      background-color: $lightblue;
+
+      img {
+        height: 64px;
+        aspect-ratio: 1/1;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+      }
+      h6 {
+        text-align: center;
+        font-family: $Montserrat;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        color: $yellow;
+      }
+    }
+    a {
+      font-size: 1.2rem;
+      font-family: $Montserrat;
+      height: 70px;
+      padding-left: 30px;
+      color: $yellow;
+      text-decoration: none;
+      padding-top: 20px;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: $yellow;
+        color: $white;
+        padding-top: 15px;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+    .logout {
+      background-color: red;
+      color: $white;
+      &:hover {
+        background-color: darkred;
+        color: $white;
+      }
+    }
+    .profil {
+      padding-left: 70px;
+      margin-top: 130%;
+      img {
+        height: 32px;
+        aspect-ratio: 1/1;
+        margin-right: 20px;
+        border-radius: 50%;
+      }
+      &:hover {
+        padding-top: 20px;
+        background-color: lightgrey;
+      }
+    }
+  }
+  .content {
+    height: 100%;
+    width: 85%;
+    background-color: $lightgrey;
+    display: flex;
+    flex-direction: column;
+    .navbarPannel {
+      height: 70px;
+      width: 100%;
+      background-color: $lightblue;
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      float: right;
+      img {
+        display: block;
+        margin: auto;
+        height: 36px;
+        margin-right: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: $white;
+        font-family: $Montserrat;
+        margin-right: 20px;
+        font-size: 1.5rem;
+        align-self: center;
+        letter-spacing: 2px;
+        transition: all 0.1s;
+        &:hover {
+          color: $yellow;
+        }
+      }
+    }
+  }
+}
+
+
+
+//-Register //-AddArticle //-AddJobs //-AddProject
+//TODO
+article.addUser,
+article.register,
+article.addArticle,
+article.addJobs,
+article.addProject {
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .add {
+    display: block;
+    margin: auto;
+    border-radius: 0 !important;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  table {
+    text-align: center;
+    thead {
+      margin-bottom: 20px;
     }
   }
 }
