@@ -36,71 +36,7 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    /**
-     * +Les Utilisateurs
-     */
-    /**
-     * *formulaire de creation et modification des user
-     * @Route("/dashboard/user/{id}/edit", name="edit_user")
-     * @Route("/dashboard/user/new", name="create_user")
-     */
-    public function formUser(User $user = null, Request $request, EntityManagerInterface $manager)
-    {
-        if (!$user) {
-            $user = new User();
-        }
-        $formUser = $this->createFormBuilder($user)
-            ->add('email')
-            ->add('username')
-            ->add('password', PasswordType::class, [
-                'help' => 'Le mot de passe doit contenir entre 8 et 50 caractere.',
-            ])
-            ->add('confirm_password', PasswordType::class)
-            ->add('role', EntityType::class, [
-                'class' => Role::class,
-                'label' => 'Role de l\'utilisateur'
-            ])
-            ->getForm();
-        $formUser->handleRequest($request);
-        dump($formUser);
-        if ($formUser->isSubmitted() && $formUser->isValid()) {
-            $manager->persist($user);
-            $manager->flush();
-            return $this->redirectToRoute('pannel_user');
-        }
-        return $this->render('security/registration.html.twig', [
-            'page_name' => 'Ajouter un User',
-            'formUser' => $formUser->createView(),
-            'editMode' => $user->getId() !== null,
-        ]);
-    }
 
-    /**
-     * *fonction de suppression d'utilisateur
-     * @Route("dashboard/user/{id}/delete", name="delete_user")
-     */
-    public function deleteUser(int $id): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(User::class)->find($id);
-        $entityManager->remove($user);
-        $entityManager->flush();
-
-        return $this->redirectToRoute("pannel_user");
-    }
-
-    /**
-     * @Route ("/dashboard/user", name="dashboard_user")
-     */
-    public function add(UserRepository $repoUser): Response
-    {
-        $user = $repoUser->findAll();
-
-        return $this->render('dashboard/user.html.twig', [
-            'page_name' => 'Crée, Modifier, Supprimer...',
-            'user' => $user,
-        ]);
-    }
 
     /**
      * +Les Articles
@@ -165,7 +101,7 @@ class DashboardController extends AbstractController
         $entityManager->remove($articles);
         $entityManager->flush();
 
-        return $this->redirectToRoute("pannel_article");
+        return $this->redirectToRoute("dashboard_article");
     }
 
 
@@ -318,7 +254,7 @@ class DashboardController extends AbstractController
 
     /**
      * *affichage des projets
-     * @Route("/dashboard/projectComplete", name="dashboard_project_off")
+     * @Route("/dashboard/infos", name="dashboard_infos")
      */
     public function info(): Response
     {

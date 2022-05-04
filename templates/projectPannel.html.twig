@@ -9,8 +9,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-
-
+    {# -AOS #}
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
     {# -Font Awesome #}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -59,21 +63,73 @@
                 <h6>TedyWare</h6>
 
             </div>
-            <a href="{{ path('dashboard_project_off') }}" class="contentLink"><i class="fa-solid fa-list-check"></i>
+
+            {% if app.user.role == "Admin" %}
+            <a href="{{ path('dashboard_project_off') }}" class="contentLink  animate__animated animate__fadeIn"><i class="fa-solid fa-list-check"></i>
                 Projets en cours</a>
-            <a href="{{ path('dashboard_project_off') }}" class="contentLink"><i class="fa-solid fa-check-to-slot"></i>
+
+            <a href="{{ path('dashboard_project_off') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-check-to-slot"></i>
                 Projets Terminés</a>
-            <a href="{{ path('dashboard_user') }}" class="contentLink"><i class="fa-solid fa-user-lock"></i>
+
+            <a href="{{ path('dashboard_user') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-user-lock"></i>
                 Utilisateurs</a>
-            <a href="{{ path('dashboard_articles') }}" class="contentLink"><i class="fa-solid fa-newspaper"></i>
+
+            <a href="{{ path('dashboard_articles') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-newspaper"></i>
                 Article</a>
-            <a href="{{ path('dashboard_jobs') }}" class="contentLink"><i class="fa-solid fa-briefcase"></i>
+
+            <a href="{{ path('dashboard_jobs') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-briefcase"></i>
                 Jobs</a>
-            <a href="{{ path('dashboard_jobs') }}" class="contentLink"><i class="fa-solid fa-circle-info"></i> Vos
+
+            <a href="{{ path('dashboard_infos') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-circle-info"></i> Vos
                 informations</a>
-            <a href="{{ path('home') }}" class="contentLink"><i class="fa-solid fa-globe"></i> Site TedyWare</a>
-            <a href="{{ path('security_logout') }}" class="contentLink logout"><i
+
+            <a href="{{ path('home') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-globe"></i> Site TedyWare</a>
+            <a href="{{ path('security_logout') }}" class="contentLink logout animate__animated animate__fadeIn"><i
                     class="fa-solid fa-arrow-right-from-bracket"></i> Deconnexion</a>
+
+            {% elseif app.user.role == "Collaborateur" %}
+            <a href="{{ path('dashboard_project_off') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-list-check"></i>
+                Projets en cours</a>
+            <a href="{{ path('dashboard_infos') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-circle-info"></i> Vos
+                informations</a>
+
+            <a href="{{ path('home') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-globe"></i> Site TedyWare</a>
+            <a href="{{ path('security_logout') }}" class="contentLink logout animate__animated animate__fadeIn "><i
+                    class="fa-solid fa-arrow-right-from-bracket"></i>
+                Deconnexion</a>
+
+            {% elseif app.user.role == "CommunityManager" %}
+            <a href="{{ path('dashboard_articles') }}" class="contentLink  animate__animated animate__fadeIn"><i class="fa-solid fa-newspaper"></i>
+                Article</a>
+
+            <a href="{{ path('dashboard_jobs') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-briefcase"></i>
+                Jobs</a>
+
+            <a href="{{ path('dashboard_infos') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-circle-info"></i> Vos
+                informations</a>
+
+            <a href="{{ path('home') }}" class="contentLink "><i class="fa-solid fa-globe"></i> Site TedyWare</a>
+            <a href="{{ path('security_logout') }}" class="contentLink logout animate__animated animate__fadeIn"><i
+                    class="fa-solid fa-arrow-right-from-bracket"></i>
+                Deconnexion</a>
+
+            {% elseif app.user.role == "Developpeur" %}
+            <a href="{{ path('dashboard_project_off') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-list-check"></i>
+                Projets en cours</a>
+
+            <a href="{{ path('dashboard_project_off') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-check-to-slot"></i>
+                Projets Terminés</a>
+            <a href="{{ path('dashboard_infos') }}" class="contentLink animate__animated animate__fadeIn "><i class="fa-solid fa-circle-info"></i> Vos
+                informations</a>
+
+            <a href="{{ path('home') }}" class="contentLink animate__animated animate__fadeIn"><i class="fa-solid fa-globe"></i> Site TedyWare</a>
+            <a href="{{ path('security_logout') }}" class="contentLink logout animate__animated animate__fadeIn "><i
+                    class="fa-solid fa-arrow-right-from-bracket"></i>
+                Deconnexion</a>
+
+            {% endif %}
+
+
 
 
         </div>

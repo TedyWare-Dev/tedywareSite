@@ -4,13 +4,12 @@
 <article class="connexion">
     <bloc class="connexion">
         <h1>Espace connexion</h1>
-
         <form action="{{ path('security_login') }}" method="post">
             <div class="form-group">
                 <label>Adresse Email</label>
-                <input class="form-control" required type="text" name="_username" placeholder="Email" required>
+                <input class="form-control" required type="text" name="_username" placeholder="Email">
                 <label>Mot de passe</label>
-                <input class="form-control" required type="password" name="_password" placeholder="Mot de passe" required>
+                <input class="form-control" required type="password" name="_password" placeholder="Mot de passe">
             </div>
             <div class="form-group">
                 <button type="submit">Connexion</button>

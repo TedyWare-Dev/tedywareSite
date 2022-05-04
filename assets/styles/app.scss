@@ -4,7 +4,7 @@ $yellow: #ee9b00;
 $grapefruit: #ee3f54;
 $black: #001219; // font color
 $white: #fff; // background-color
-$lightgrey: #fff;
+$lightgrey: rgb(235, 233, 233);
 //- Theme Dark
 $darkblue: #1e2334; // Background
 $lightblue: #29345a; // Card
@@ -1246,8 +1246,6 @@ article.pannel {
   }
 }
 
-
-
 //-Register //-AddArticle //-AddJobs //-AddProject
 //TODO
 article.addUser,
@@ -1271,6 +1269,47 @@ article.addProject {
     text-align: center;
     thead {
       margin-bottom: 20px;
+    }
+  }
+}
+
+//-Infos
+
+article.infos {
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .container-infos {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(300px, auto);
+    .infobloc {
+      background-color: $yellow;
+      border-radius: 7px;
+    }
+    .animate__animated.animate__zoomInDown {
+      &:nth-child(1){
+         --animate-duration: 0.4s;
+      }
+      &:nth-child(2){
+         --animate-duration: 0.6s;
+      }
+       &:nth-child(3){
+         --animate-duration: 0.8s;
+      }
+      &:nth-child(4){
+         --animate-duration: 1s;
+      }
+      &:nth-child(5){
+         --animate-duration: 1.2s;
+      }
+       &:nth-child(6){
+         --animate-duration: 1.4s;
+      }
     }
   }
 }
