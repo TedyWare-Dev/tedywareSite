@@ -111,21 +111,6 @@ class SiteController extends AbstractController
     }
 
     /**
-     * *fonction de suppression de job
-     * @Route("/event/{id}/delete", name="delete_jobs")
-     */
-    public function deleteArticle(int $id): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $article = $entityManager->getRepository(Article::class)->find($id);
-        $entityManager->remove($article);
-        $entityManager->flush();
-
-        return $this->redirectToRoute("blog");
-    }
-
-
-    /**
      * *page de contact pour TedyWare
      * @Route("/contact", name="contact")
      */

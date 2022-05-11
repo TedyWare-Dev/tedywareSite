@@ -13,12 +13,10 @@ use App\Entity\Spotlight;
 use App\Repository\ArticleRepository;
 use App\Repository\JobsRepository;
 use App\Repository\ProjectRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -71,7 +69,6 @@ class DashboardController extends AbstractController
 
             ->getForm();
         $formArticle->handleRequest($request);
-        dump($formArticle);
         if ($formArticle->isSubmitted() && $formArticle->isValid()) {
 
             $article->setCreatedAt(new \DateTime());
@@ -203,12 +200,20 @@ class DashboardController extends AbstractController
         }
 
         $form = $this->createFormBuilder($projects)
-            ->add('collaborator')
-            ->add('name')
-            ->add('type')
-            ->add('picture')
-            ->add('completionDate')
-            ->add('description')
+        ->add('name')
+        ->add('type')
+        ->add('picture')
+        ->add('startingDate', null, [
+            'widget' => 'single_text',
+            ])
+        ->add('endDate', null, [
+            'widget' => 'single_text',
+        ])
+        ->add('budget')
+        ->add('progress')
+        ->add('state')
+        ->add('description')
+        ->add('Collaborator')
             ->getForm();
         $form->handleRequest($request);
 
@@ -216,12 +221,12 @@ class DashboardController extends AbstractController
 
             $manager->persist($projects);
             $manager->flush();
-            return $this->redirectToRoute('show_projects', ['id' => $projects->getId()]);
+            // return $this->redirectToRoute('show_projects', ['id' => $projects->getId()]);
         }
 
-        return $this->render('site/createProject.html.twig', [
+        return $this->render('dashboard/createProject.html.twig', [
             'page_name' => 'Ajouter un Project',
-            'formProject' => $form->createView(),
+            'formProjects' => $form->createView(),
             'editMode' => $projects->getId() !== null,
         ]);
     }
@@ -240,20 +245,70 @@ class DashboardController extends AbstractController
         return $this->redirectToRoute("dashboard_project_off");
     }
     /**
-     * *affichage des projets
+     * *affichage des projets terminer
      * @Route("/dashboard/projectComplete", name="dashboard_project_off")
      */
-    public function projets(ProjectRepository $repoProjects): Response
+    public function projetsEnd(ProjectRepository $repoProjects): Response
     {
-        $projects = $repoProjects->findAll();
+        $project = $repoProjects->findAll();
         return $this->render('dashboard/projectComplete.html.twig', [
             'page_name' => 'Projets terminés',
-            'projects' => $projects,
+            'project' => $project,
+        ]);
+    }
+
+/**
+     * *affichage des projets terminer
+     * @Route("/dashboard/projectActive", name="dashboard_project_on")
+     */
+    public function projetsActive(ProjectRepository $repoProjects): Response
+    {
+        $project = $repoProjects->findAll();
+        return $this->render('dashboard/projectActive.html.twig', [
+            'page_name' => 'Projets en cours',
+            'project' => $project,
         ]);
     }
 
     /**
-     * *affichage des projets
+     * *affichage de tous les projets 
+     * @Route("/dashboard/projectAll", name="dashboard_project_all")
+     */
+    public function projetsAll(ProjectRepository $repoProjects): Response
+    {
+        $project = $repoProjects->findAll();
+        return $this->render('dashboard/projectAll.html.twig', [
+            'page_name' => 'Tous les projets',
+            'project' => $project,
+        ]);
+    }
+
+    /**
+     * *affichage des projets a verifier
+     * @Route("/dashboard/projectCheck", name="dashboard_project_check")
+     */
+    public function projetsCheck(ProjectRepository $repoProjects): Response
+    {
+        $project = $repoProjects->findAll();
+        return $this->render('dashboard/projectCheck.html.twig', [
+            'page_name' => 'Tous les projets a vérifier',
+            'project' => $project,
+        ]);
+    }
+
+    /**
+     * *affichage du menu projets
+     * @Route("/dashboard/project", name="dashboard_project")
+     */
+    public function projets(): Response
+    {
+        return $this->render('dashboard/project.html.twig', [
+            'page_name' => 'Projets',
+        ]);
+    }
+
+    /**
+     * *affichage des informations
      * @Route("/dashboard/infos", name="dashboard_infos")
      */
     public function info(): Response
@@ -262,4 +317,5 @@ class DashboardController extends AbstractController
             'page_name' => 'Projets terminés',
         ]);
     }
+
 }

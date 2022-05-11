@@ -1,0 +1,48 @@
+{% extends "projectPannel.html.twig" %}
+
+{% block body %}
+
+<article class="addProject">
+
+    <h1 class="title">
+        {% if editMode %}
+        Modifier un projet
+        {% else %}
+        Ajouter un projet
+        {% endif %}
+    </h1>
+    <div class="containerGrid">
+
+        <div class="bloc">{{  form_start(formProjects) }}
+            {{form_row(formProjects.name, {'label': 'Nom du projet'})}}
+            {{form_row(formProjects.type, {'label': "Type du projet"})}}
+            {{form_row(formProjects.picture, {'label': 'Image du projet'})}}
+            {{form_row(formProjects.startingDate, {'label': 'Date de commencement du projet'})}}
+        </div>
+        <div class="bloc">
+            {{form_row(formProjects.endDate, {'label': 'Date de fin du projet'})}}
+            {{form_row(formProjects.budget, {'label': 'Budget total du projet ?'})}}
+            {{form_row(formProjects.progress, {'label': 'Où en sommes nous ?'})}}
+            {{form_row(formProjects.state, {'label': 'Dans quel etat le projet est t\'il ?'})}}
+        </div>
+        <div class="bloc">
+            {{form_row(formProjects.description, {'label': 'À quoi sert le projet'})}}
+            {{form_row(formProjects.Collaborator, {'label': 'Avec qui travaillons nous ?'})}}
+        </div>
+
+
+
+    </div>
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+        Enregistrer
+        {% else %}
+        Ajouter un article
+        {% endif %}
+    </button>
+    {{  form_end(formProjects) }}
+    </div>
+
+</article>
+
+{% endblock  %}

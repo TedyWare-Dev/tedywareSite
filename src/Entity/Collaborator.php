@@ -44,10 +44,6 @@ class Collaborator
      */
     private $twitter;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="collaborator")
-     */
-    private $project;
 
     public function __construct()
     {
@@ -119,33 +115,6 @@ class Collaborator
         return $this;
     }
 
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getProject(): Collection
-    {
-        return $this->project;
-    }
 
-    public function addProject(Project $project): self
-    {
-        if (!$this->project->contains($project)) {
-            $this->project[] = $project;
-            $project->setCollaborator($this);
-        }
 
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->project->removeElement($project)) {
-            // set the owning side to null (unless already changed)
-            if ($project->getCollaborator() === $this) {
-                $project->setCollaborator(null);
-            }
-        }
-
-        return $this;
-    }
 }

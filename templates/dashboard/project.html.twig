@@ -1,0 +1,69 @@
+{% extends "projectPannel.html.twig" %}
+
+{% block body %}
+
+<article class="projectDashboard">
+
+    <h1>Projets</h1>
+
+    <div class="containerGrid">
+        <a href="{{path('dashboard_project_all')}}">
+            <div class="flip">
+                <div class="front">
+                    <h1 class="text-shadow">Tous les projets</hi>
+                </div>
+                <div class="back">
+                    <h2>Tous les projets</h2>
+                    <p>Voici la liste de tous les projets en cours ou terminés.</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{path('dashboard_project_on')}}">
+            <div class="flip">
+                <div class="front">
+                    <h1 class="text-shadow">Projets en cours</hi>
+                </div>
+                <div class="back">
+                    <h2>Projets en cours</h2>
+                    <p>Voici la liste de tous les projets en cours.</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{path('dashboard_project_off')}}">
+            <div class="flip">
+                <div class="front">
+                    <h1 class="text-shadow">Projets terminé</hi>
+                </div>
+                <div class="back">
+                    <h2>Projets terminé</h2>
+                    <p>Voici la liste des projets terminés.</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{path('create_projects')}}">
+            <div class="flip">
+                <div class="front">
+                    <h1 class="text-shadow">Ajouter un Projet</hi>
+                </div>
+                <div class="back">
+                    <h2>Ajouter un Projet</h2>
+                    <p>Vous voulez ajouter un projet ? C'est ici !</p>
+                </div>
+            </div>
+        </a>
+        
+        <a href="{{path('dashboard_project_check')}}">
+            <div class="flip">
+                <div class="front">
+                    <h1 class="text-shadow">Projet a verifier</hi>
+                </div>
+                <div class="back">
+                    <h2>Projet a verifier</h2>
+                    <p>Voici la liste des projets a verifier.</p>
+                </div>
+            </div>
+        </a>
+
+</article>
+
+{% endblock %}

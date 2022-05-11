@@ -25,7 +25,19 @@ class RegistrationType extends AbstractType
             ->add('role', EntityType::class, [
                 'class' => Role::class,
                 'label' => 'Role de l\'utilisateur'
-            ]);
+            ])
+            ->add('name')
+            ->add('projects')
+            ->add('picture')
+            ->add('website')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('registrationDate', null, [
+            'widget' => 'single_text',
+        ]);
+
+        
+
         ;
     }
 

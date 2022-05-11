@@ -57,15 +57,46 @@ class User implements UserInterface
     private $role;
 
     /**
-     * @ORM\ManyToMany(targetEntity=OnGoingProject::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="Collaborator")
      */
-    private $onGoingProjects;
+    private $projects;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $registrationDate;
 
     public function __construct()
     {
-        $this->onGoingProjects = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -138,29 +169,113 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection<int, OnGoingProject>
+     * @return Collection<int, Project>
      */
-    public function getOnGoingProjects(): Collection
+    public function getProjects(): Collection
     {
-        return $this->onGoingProjects;
+        return $this->projects;
     }
 
-    public function addOnGoingProject(OnGoingProject $onGoingProject): self
+    public function addProject(Project $project): self
     {
-        if (!$this->onGoingProjects->contains($onGoingProject)) {
-            $this->onGoingProjects[] = $onGoingProject;
-            $onGoingProject->addUser($this);
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setCollaborator($this);
         }
 
         return $this;
     }
 
-    public function removeOnGoingProject(OnGoingProject $onGoingProject): self
+    public function removeProject(Project $project): self
     {
-        if ($this->onGoingProjects->removeElement($onGoingProject)) {
-            $onGoingProject->removeUser($this);
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getCollaborator() === $this) {
+                $project->setCollaborator(null);
+            }
         }
 
         return $this;
     }
+
+
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): self
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): self
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): self
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    public function getRegistrationDate(): ?\DateTimeInterface
+    {
+        return $this->registrationDate;
+    }
+
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getUsername();
+        return $this->getRegistrationDate();
+    }
+
 }

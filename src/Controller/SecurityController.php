@@ -42,6 +42,15 @@ class SecurityController extends AbstractController
                 'class' => Role::class,
                 'label' => 'Role de l\'utilisateur'
             ])
+            ->add('name')
+            ->add('projects')
+            ->add('picture')
+            ->add('website')
+            ->add('facebook')
+            ->add('twitter')
+            ->add('registrationDate', null, [
+                'widget' => 'single_text',
+            ])
             ->getForm();
         $formUser->handleRequest($request);
         dump($formUser);

@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\OnGoingProject;
+use App\Entity\State;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method OnGoingProject|null find($id, $lockMode = null, $lockVersion = null)
- * @method OnGoingProject|null findOneBy(array $criteria, array $orderBy = null)
- * @method OnGoingProject[]    findAll()
- * @method OnGoingProject[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method State|null find($id, $lockMode = null, $lockVersion = null)
+ * @method State|null findOneBy(array $criteria, array $orderBy = null)
+ * @method State[]    findAll()
+ * @method State[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class OnGoingProjectRepository extends ServiceEntityRepository
+class StateRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, OnGoingProject::class);
+        parent::__construct($registry, State::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(OnGoingProject $entity, bool $flush = true): void
+    public function add(State $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class OnGoingProjectRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(OnGoingProject $entity, bool $flush = true): void
+    public function remove(State $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class OnGoingProjectRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return OnGoingProject[] Returns an array of OnGoingProject objects
+    //  * @return State[] Returns an array of State objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
+            ->orderBy('s.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class OnGoingProjectRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?OnGoingProject
+    public function findOneBySomeField($value): ?State
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
