@@ -1,6 +1,6 @@
 # Tedyware - Website
 Lien du Git : 
-https://github.com/TedyWare-Dev/site_tedyware
+https://github.com/TedyWare-Dev/tedywareSite
 Technos : Symfony, SASS
 
 
