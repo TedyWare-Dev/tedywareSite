@@ -3,14 +3,35 @@
 {% block body %}
 
 <article class="infos">
-<h1>Vos informations</h1>
+    <h1>Vos informations</h1>
     <div class="container-infos">
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
-        <div  class="infobloc animate__animated animate__zoomInDown"></div>
+        <div class="infobloc animate__animated animate__zoomInDown">
+            <img src="{{app.user.picture}}">
+            <ul>
+                <li>Pseudo : {{app.user.username}}</li>
+                <li>Email : {{app.user.email}}</li>
+            </ul>
+        </div>
+        <div class="infobloc animate__animated animate__zoomInDown">
+            <h1><i class="fa-solid fa-user-large"></i></h1>
+            <ul>
+                <li>{% if app.user.role == "Collaborateur" %}
+                    Votre entreprise :
+                    {% else %}
+                    Votre nom :
+                    {% endif %}
+                    {{app.user.name}}</li>
+                <li>Role : {{app.user.role}}</li>
+            </ul>
+        </div>
+        <div class="infobloc animate__animated animate__zoomInDown">
+            <h1><i class="fa-solid fa-earth-europe"></i></h1>
+            <ul>
+                <li>Site Web : <a href="{{app.user.website}}">{{app.user.website}}</a></li>
+                <li>Facebook : <a href="{{app.user.facebook}}">{{app.user.facebook}}</a></li>
+                <li>Twitter : <a href="{{app.user.twitter}}">{{app.user.twitter}}</a></li>
+            </ul>
+        </div>
     </div>
 </article>
 

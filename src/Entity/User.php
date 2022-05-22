@@ -28,8 +28,9 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Email()
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Veuillez saisir un email.")
+     * @Assert\Email(message="L'email {{ value }} n'est pas disponible.")
      */
     private $email;
 
@@ -40,8 +41,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractere")
-     * 
+     * @Assert\NotBlank(message="Veuillez saisir un mot de passe.")
+     * @Assert\Length(min="8")
+     * @Assert\Regex(pattern="/^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-Ý])(?=.*[0-9])(?=.*[^a-zà-ÿA-ZÀ-Ý0-9]).{8,}$/", message="Le message doit comporter au moins 8 caractre dont: 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial.")
      */
     private $password;
 
@@ -140,10 +142,12 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+        return '';
     }
 
     public function getSalt()
     {
+        return '';
     }
 
     public function getRoles()
@@ -276,6 +280,9 @@ class User implements UserInterface
     {
         return $this->getUsername();
         return $this->getRegistrationDate();
+        return $this->getProjects();
+        return $this->getSalt();
+        return $this->getUserIdentifier();
     }
 
 }

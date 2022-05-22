@@ -26,7 +26,9 @@
                     <td><img style="aspect-ratio: 16/9; height:100px;" src="{{project.picture}}"></td>
                     <td>{{project.endDate | date('d/m/Y')}}</td>
                     <td>{{project.startingDate | date('d/m/Y')}}</td>
-                    <td>{{project.state}}</td>
+                    {% if project.state == "Pas commencé" %}
+                    <td style="color: red;">{{project.state}}</td>
+                    {% endif %}
                     <td>
                         <a href="{{ path('edit_projects', {'id': project.id}) }}" class="btn btn-warning">Modifier</a>
                         <a href="{{ path('delete_projects', {'id': project.id}) }}" class="btn btn-danger">Supprimer</a>

@@ -8,7 +8,7 @@ $lightgrey: rgb(235, 233, 233);
 //- Theme Dark
 $darkblue: #1e2334; // Background
 $lightblue: #29345a; // Card
-$darkyellow: #d18800; // Title
+$darkyellow:  #bb7900 ; // Title
 $grey: #b6b4ca;
 //- card color
 $skyblue: #7ba7d7;
@@ -1309,8 +1309,39 @@ article.infos {
     grid-gap: 10px;
     grid-auto-rows: minmax(300px, auto);
     .infobloc {
-      background-color: $yellow;
+      background-color: $lightblue;
+      color: $white;
       border-radius: 7px;
+      img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        aspect-ratio: 1/1;
+        height: 80px;
+        border-radius: 50%;
+      }
+    }
+    h1 {
+      color: $yellow;
+      font-size: 4rem;
+    }
+    ul {
+      margin-top: 15px;
+      li {
+        list-style: none;
+        font-size: 1.5rem;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        a{
+          color: $white;
+          &:hover{
+            color: $yellow;
+
+          }
+        }
+      }
     }
     .animate__animated.animate__zoomInDown {
       &:nth-child(1) {
@@ -1400,22 +1431,20 @@ article.projectDashboard {
       position: relative;
       display: inline-block;
       width: 500px;
-      > .front {
-        &:nth-child(1) {
-          background: url("http://ressources.tedyware.fr/admin/all.png");
-        }
-        &:nth-child(2) {
-          background: url("http://ressources.tedyware.fr/admin/encours.png");
-        }
-        &:nth-child(3) {
-          background: url("http://ressources.tedyware.fr/admin/finished.png");
-        }
-        &:nth-child(4) {
-          background: url("http://ressources.tedyware.fr/admin/add.png");
-        }
-        &:nth-child(5) {
-          background: url("http://ressources.tedyware.fr/admin/verified.png");
-        }
+      .bg1 {
+        background: url("http://ressources.tedyware.fr/admin/all.png");
+      }
+      .bg2 {
+        background: url("http://ressources.tedyware.fr/admin/encours.png");
+      }
+      .bg3 {
+        background: url("http://ressources.tedyware.fr/admin/finished.png");
+      }
+      .bg4 {
+        background: url("http://ressources.tedyware.fr/admin/add.png");
+      }
+      .bg5 {
+        background: url("http://ressources.tedyware.fr/admin/verified.png");
       }
 
       > .front,
