@@ -68,7 +68,7 @@
             {% if app.user.role == "Admin" %}
             <a href="{{ path('dashboard_project') }}" class="contentLink  animate__animated animate__fadeIn"><i
                     class="fa-solid fa-list-check"></i>
-                Projets</a>
+               Projets</a>
 
             <a href="{{ path('dashboard_user') }}" class="contentLink animate__animated animate__fadeIn "><i
                     class="fa-solid fa-user-lock"></i>
@@ -148,7 +148,7 @@
 
         <div class="content">
             <div class="navbarPannel">
-                <img src="http://ressources.tedyware.fr/main/logo-ours.png" alt=""><a href="#" class="">
+                <img src="{{app.user.picture}}" alt=""><a href="#" class="">
                     {{ app.user.name }}</a>
             </div>
 

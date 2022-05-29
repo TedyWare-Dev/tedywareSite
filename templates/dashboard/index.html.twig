@@ -1,1 +1,8 @@
 {% extends "projectPannel.html.twig" %}
+
+{% block body %}
+    <article class="dashboardHome">
+       <h1>Bienvenue <span class="yellow">{{ app.user.name }}</span> sur {% if app.user.name == "Collaborateur" %} votre {% else %} ton {% endif %} tableau de bord </h1>
+
+    </article>
+{% endblock %}

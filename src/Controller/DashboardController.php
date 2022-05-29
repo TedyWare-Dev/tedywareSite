@@ -98,7 +98,7 @@ class DashboardController extends AbstractController
         $entityManager->remove($articles);
         $entityManager->flush();
 
-        return $this->redirectToRoute("dashboard_article");
+        return $this->redirectToRoute("dashboard_articles");
     }
 
 
